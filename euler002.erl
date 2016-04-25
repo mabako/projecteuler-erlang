@@ -3,7 +3,7 @@
 
 -export([fibonacci/1]).
 
-fibonacci(UpperLimt) -> fibonacci_sum(0, UpperLimit, 1, 1).
+fibonacci(UpperLimit) -> fibonacci_sum(0, UpperLimit, 1, 1).
 
 % Check if we're exceeding the upper limit imposed
 fibonacci_sum(Sum, UpperLimit, NumberMinus1, NumberMinus2) when NumberMinus1 + NumberMinus2 > UpperLimit -> Sum;
