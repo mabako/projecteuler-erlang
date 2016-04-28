@@ -1,5 +1,5 @@
 -module(util).
--export([digits/1, digits_to_number/1, sum_of_digits/1, pow/2, fac/1]).
+-export([digits/1, digits_to_number/1, sum_of_digits/1, pow/2, fac/1, permutations/1]).
 
 % Splits an integer into a list containing all digits of the integer.
 digits(N) when is_integer(N) ->
@@ -21,3 +21,7 @@ pow(Base, Exponent, Value) -> pow(Base, Exponent - 1, Value * Base).
 fac(0) -> 1;
 fac(1) -> 1;
 fac(N) -> N * fac(N-1).
+
+% All Permutations of a given input
+permutations([]) -> [[]];
+permutations(L)  -> [[H|T] || H <- L, T <- permutations(L--[H])].
