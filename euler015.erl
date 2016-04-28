@@ -1,8 +1,6 @@
 -module(euler015).
+-import(util, [fac/1]).
 -export([solve/1]).
-
-fac(1) -> 1;
-fac(N) -> N * fac(N - 1).
 
 solve(N) ->
   fac(2 * N) div (fac(N) * fac(N)).
