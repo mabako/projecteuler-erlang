@@ -1,11 +1,6 @@
 -module(euler027).
--export([prime/1, number_of_primes/1, number_of_primes_for/2]).
-
-prime(N) -> prime(N, 2).
-prime(N, _) when N < 2 -> false;
-prime(N, X) when X * X > N -> true;
-prime(N, X) when (N rem X) == 0 -> false;
-prime(N, X) -> prime(N, X + 1).
+-import(primes, [is_prime/1]).
+-export([number_of_primes/1, number_of_primes_for/2]).
 
 max([Head | Tail]) when length(Tail) == 0 -> Head;
 max([{A, B, Primes} | Tail]) ->
@@ -25,7 +20,7 @@ number_of_primes(X) ->
 number_of_primes_for(A, B) ->
   number_of_primes_for(A, B, 0).
 number_of_primes_for(A, B, N) ->
-  case prime(N * N + A * N + B) of
+  case is_prime(N * N + A * N + B) of
     true -> number_of_primes_for(A, B, N + 1) + 1;
     false -> 0
   end.
